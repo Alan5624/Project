@@ -125,5 +125,4 @@ public class Enemy : Charactor
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
     }
-//
 }
