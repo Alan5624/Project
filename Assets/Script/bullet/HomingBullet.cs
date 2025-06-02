@@ -69,7 +69,7 @@ public class HomingBullet : Bullet
                 lockOnTimer = lockOnDuration;
             }
         }
-
+//test
         // 追蹤目前的目標
         if (currentTarget != null)
         {
