@@ -14,7 +14,6 @@ public class Enemy : Charactor
     public float knockbackForce;
     public float knockbackDuration;
     public float knockbackTimer;
-
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public new Collider2D collider2D;
     [HideInInspector] public new Rigidbody2D rigidbody2D;
@@ -126,4 +125,5 @@ public class Enemy : Charactor
         yield return new WaitForSeconds(flashDuration);
         spriteRenderer.color = originalColor;
     }
+//
 }
