@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d303e6432354b634abad87439208c323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 100000000
   currentHealth: 0
   isVulnerable: 0
   invulnerableDuration: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a02dcaa93db0443b9bf99c3d2f5901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3015029341661319225, guid: 02ee5be371bcf434abf38c83433e9a21, type: 3}
+  bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
   spawnPoint: {fileID: 1788965504}
   defaultCapacity: 20
   maxSize: 100
