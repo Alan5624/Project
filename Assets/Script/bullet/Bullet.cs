@@ -38,7 +38,6 @@ public class Bullet : MonoBehaviour
         {
             ReturnToPool();
         }
-        //test
     }
 
     private void OnTriggerEnter2D(Collider2D other)
