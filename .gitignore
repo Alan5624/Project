@@ -7,8 +7,6 @@
 [Mm]emoryCaptures/
 .vs/
 .vscode/
-*.csproj
-*.sln
 *.user
 *.unityproj
 *.pidb

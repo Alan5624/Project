@@ -62,14 +62,14 @@ public class HomingBullet : Bullet
                 }
             }
 
-            // 如果找到最近的目標，則設定為當前目標:))))))))))
+            // 如果找到最近的目標，則設定為當前目標
             if (nearestTarget != null)
             {
                 currentTarget = nearestTarget;
                 lockOnTimer = lockOnDuration;
             }
         }
-        
+
         // 追蹤目前的目標
         if (currentTarget != null)
         {
