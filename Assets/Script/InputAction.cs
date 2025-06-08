@@ -35,6 +35,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenPackage"",
+                    ""type"": ""Button"",
+                    ""id"": ""c08b8f1b-be88-431f-9065-7e13b349a36f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""718abf08-d68d-4d6e-87e0-532d8d2aaa07"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""OpenPackage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -69,6 +89,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
+        m_Game_OpenPackage = m_Game.FindAction("OpenPackage", throwIfNotFound: true);
     }
 
     ~@InputSystem()
@@ -136,11 +157,13 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
     private readonly InputAction m_Game_Fire;
+    private readonly InputAction m_Game_OpenPackage;
     public struct GameActions
     {
         private @InputSystem m_Wrapper;
         public GameActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fire => m_Wrapper.m_Game_Fire;
+        public InputAction @OpenPackage => m_Wrapper.m_Game_OpenPackage;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -153,6 +176,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @OpenPackage.started += instance.OnOpenPackage;
+            @OpenPackage.performed += instance.OnOpenPackage;
+            @OpenPackage.canceled += instance.OnOpenPackage;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -160,6 +186,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @OpenPackage.started -= instance.OnOpenPackage;
+            @OpenPackage.performed -= instance.OnOpenPackage;
+            @OpenPackage.canceled -= instance.OnOpenPackage;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -189,5 +218,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     public interface IGameActions
     {
         void OnFire(InputAction.CallbackContext context);
+        void OnOpenPackage(InputAction.CallbackContext context);
     }
 }

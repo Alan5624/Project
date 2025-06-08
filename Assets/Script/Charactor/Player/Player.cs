@@ -8,7 +8,7 @@ public class Player : Charactor
 
     public bool isCoolDown;
     public float attackCooldownDuration;
-    private InputSystem inputSystem;
+    [HideInInspector]public InputSystem inputSystem;
     [HideInInspector] public new Rigidbody2D rigidbody2D;
     [HideInInspector] public SpriteRenderer spriteRenderer;
 
@@ -26,6 +26,7 @@ public class Player : Charactor
         inputSystem = new InputSystem();
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        UIManager.Instance.panelDictionary.Clear();
     }
 
     protected override void OnEnable()
@@ -33,6 +34,13 @@ public class Player : Charactor
         base.OnEnable();
         //inputSystem.Game.Fire.performed += OnFire;
         inputSystem.Game.Enable();
+    }
+
+    private void Update() {
+        if (inputSystem.Game.OpenPackage.triggered)
+        {
+            UIManager.Instance.OpenPanel(UIConst.PackagePanel);
+        }
     }
 
     private void FixedUpdate()

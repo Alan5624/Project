@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dba534d4e7de8f4f8fbb7e698f85e7a, type: 3}
+  m_Name: BulletTable
+  m_EditorClassIdentifier: 
+  bulletItemsList:
+  - id: 0
+    name: "\u666E\u901A\u5B50\u5F48"
+    skillDescription: "\u4E00\u500B\u666E\u901A\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63"
+    speed: 3
+    damage: 10
+    lifeTime: 0
+    prefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
+    iconPath: Icon/Bullet
+  - id: 1
+    name: "\u8FFD\u8E64\u5B50\u5F48"
+    skillDescription: "\u4E00\u500B\u8FFD\u8E64\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63\uFF0C\u6703\u8FFD\u8E64\u7BC4\u570D\u5167\u7684\u6575\u4EBA"
+    speed: 3
+    damage: 10
+    lifeTime: 0
+    prefab: {fileID: 7255484180147391890, guid: f768f5110e619474a8ce4c1d68ffb8d5, type: 3}
+    iconPath: Icon/HomingBullet
+  - id: 2
+    name: "\u5206\u88C2\u5B50\u5F48"
+    skillDescription: "\u4E00\u500B\u5206\u88C2\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63\uFF0C\u4E00\u6BB5\u6642\u9593\u6216\u6253\u5230\u6575\u4EBA\u5F8C\uFF0C\u6703\u5206\u88C23\u500B\u666E\u901A\u5B50\u5F48"
+    speed: 3
+    damage: 10
+    lifeTime: 0.5
+    prefab: {fileID: 3015029341661319225, guid: 02ee5be371bcf434abf38c83433e9a21, type: 3}
+    iconPath: Icon/SplitBullet
