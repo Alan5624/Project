@@ -138,7 +138,6 @@ public class PackagePanel : BasePanel
     }
     private void OnClickOK()
     {
-        Debug.Log("OK button clicked.");
         ClosePanel(name);
     }
 }
