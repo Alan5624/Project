@@ -62,4 +62,10 @@ public class BulletSpawner : MonoBehaviour
         }
         bullet.Fire(direction);
     }
+
+    public void SetBullet(GameObject bulletPrefab)
+    {
+        bulletPool.Clear();
+        this.bulletPrefab = bulletPrefab;
+    }
 }

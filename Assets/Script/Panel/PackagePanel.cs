@@ -7,8 +7,26 @@ using UnityEngine.UI;
 public class PackagePanel : BasePanel
 {
     private Transform UIOK;
+    private Transform UIUSE;
     private Transform UIScrollView;
     public GameObject packageCellPrefab;
+    private BulletItem bulletItem;
+    private PackageLocalItem packageLocalItem;
+    private string choseUid;
+
+    public string ChoseUid
+    {
+        get
+        {
+            return choseUid;
+        }
+        set
+        {
+            choseUid = value;
+            // Refresh
+        }
+    }
+
     private void Awake()
     {
         InistantUI();
@@ -65,14 +83,37 @@ public class PackagePanel : BasePanel
     private void InstantName()
     {
         UIOK = transform.Find("PackagePanel/RightBottom/OK");
+        UIUSE = transform.Find("PackagePanel/RightBottom/USE");
         UIScrollView = transform.Find("PackagePanel/LeftBottom/Scroll View");
     }
 
     private void InstanceClick()
     {
         UIOK.GetComponent<Button>().onClick.AddListener(OnClickOK);
+        UIUSE.GetComponent<Button>().onClick.AddListener(OnClickUse);
     }
 
+    private void OnClickUse()
+    {
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            if (player.nowUsingUid == choseUid)
+            {
+                Debug.Log("Already using this item.");
+                return;
+            }
+            if (choseUid == null)
+            {
+                Debug.Log("No item selected.");
+                return;
+            }
+            player.nowUsingUid = choseUid;
+            packageLocalItem = GameManager.Instance.GetPackageLocalItemByUid(choseUid);
+            bulletItem = GameManager.Instance.GetPackageLocalItemById(packageLocalItem.id);
+            player.bulletSpawner.SetBullet(bulletItem.prefab);
+        }
+    }
     private void OnClickOK()
     {
         Debug.Log("OK button clicked.");

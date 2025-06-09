@@ -40,6 +40,13 @@ public class GameManager : MonoBehaviour
         return PackageLocalData.Instance.LoadPackage();
     }
 
+    public BulletItem GetMerchandise()
+    {
+        List<BulletItem> items = GetBulletTableData().bulletItemsList;
+        int id = Random.Range(0, 2);
+        return GetPackageLocalItemById(id);
+    }
+
     public PackageLocalItem GetPackageLocalItemByUid(string uid)
     {
         List<PackageLocalItem> items = GetPackageLocalData();
