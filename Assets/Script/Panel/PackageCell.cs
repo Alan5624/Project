@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PackageCell : MonoBehaviour
+public class PackageCell : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
     private Transform UIIcon;
@@ -38,5 +39,11 @@ public class PackageCell : MonoBehaviour
         Texture2D texture2D = (Texture2D)Resources.Load<Texture2D>(bulletItem.iconPath);
         Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0, 0));
         UIIcon.GetComponent<Image>().sprite = sprite;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        uiPanel.ChoseUid = packageLocalItem.uid;
+        Debug.Log("ChoseUid: " + uiPanel.ChoseUid);
     }
 }

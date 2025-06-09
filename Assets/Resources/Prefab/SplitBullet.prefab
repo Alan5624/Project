@@ -172,15 +172,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3893240cb064b548b253ef021fd65d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0.5
+  lifeTime: 1
   timer: 0
   damage: 10
   bulletSpeed: 3
   delayTime: 0.1
   rigidbody2D: {fileID: 0}
   bulletSpawner: {fileID: 405355358797496600}
-  splitCount: 10
-  splitRotationOffset: 45
+  splitCount: 3
+  splitRotationOffset: 30
 --- !u!114 &405355358797496600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a02dcaa93db0443b9bf99c3d2f5901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7255484180147391890, guid: f768f5110e619474a8ce4c1d68ffb8d5, type: 3}
+  bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
   spawnPoint: {fileID: 8161539367838387193}
   defaultCapacity: 3
   maxSize: 3

@@ -14,6 +14,7 @@ public class Player : Charactor
 
     public Color flashColor = Color.red;
     public float flashDuration;
+    public string nowUsingUid;
 
     private Color originalColor;
 
@@ -27,6 +28,7 @@ public class Player : Charactor
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         UIManager.Instance.panelDictionary.Clear();
+        nowUsingUid = "0";
     }
 
     protected override void OnEnable()
