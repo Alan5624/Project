@@ -9,10 +9,13 @@ public class PackagePanel : BasePanel
     private Transform UIOK;
     private Transform UIUSE;
     private Transform UIScrollView;
+    private Transform UIRefresh;
     public GameObject packageCellPrefab;
+    public GameObject merchandisePanelPrefab;
     private BulletItem bulletItem;
     private PackageLocalItem packageLocalItem;
     private string choseUid;
+    private int UID = 2;
 
     public string ChoseUid
     {
@@ -36,7 +39,7 @@ public class PackagePanel : BasePanel
         RefreshUI();
     }
 
-    private void RefreshUI()
+    public void RefreshUI()
     {
         RectTransform scrollContent = UIScrollView.GetComponent<ScrollRect>().content;
         for (int i = 0; i < scrollContent.childCount; i++)
@@ -85,12 +88,31 @@ public class PackagePanel : BasePanel
         UIOK = transform.Find("PackagePanel/RightBottom/OK");
         UIUSE = transform.Find("PackagePanel/RightBottom/USE");
         UIScrollView = transform.Find("PackagePanel/LeftBottom/Scroll View");
+        UIRefresh = transform.Find("PackagePanel/RightBottom/Refresh");
     }
 
     private void InstanceClick()
     {
         UIOK.GetComponent<Button>().onClick.AddListener(OnClickOK);
         UIUSE.GetComponent<Button>().onClick.AddListener(OnClickUse);
+        UIRefresh.GetComponent<Button>().onClick.AddListener(OnClickRefresh);
+    }
+
+    private void OnClickRefresh()
+    {
+        Transform ui_root = GameObject.Find("Shop").transform;
+        for (int i = 0; i < 3; i++)
+        {
+            BulletItem bulletItem = GameManager.Instance.GetMerchandise();
+            if (bulletItem != null)
+            {
+                GameObject merchandise = Instantiate(merchandisePanelPrefab, ui_root);
+                MerchandisePanel merchandisePanel = merchandise.GetComponent<MerchandisePanel>();
+                UID++;
+                merchandisePanel.UID = UID.ToString();
+                merchandisePanel.Refresh(new PackageLocalItem { uid = UID.ToString(), id = bulletItem.id }, this);
+            }
+        }
     }
 
     private void OnClickUse()

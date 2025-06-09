@@ -15,11 +15,14 @@ public class Player : Charactor
     public Color flashColor = Color.red;
     public float flashDuration;
     public string nowUsingUid;
+    public int money;
 
     private Color originalColor;
 
-    private void Start() {
+    private void Start()
+    {
         originalColor = spriteRenderer.color;
+        money = 0;
     }
 
     private void Awake()
@@ -83,6 +86,13 @@ public class Player : Charactor
     public void FlashRed()
     {
         StartCoroutine(FlashRoutine());
+    }
+
+    private void OnGUI()
+    {
+        GUI.skin.label.fontSize = 30;
+        GUI.Label(new Rect(20, 20, 500, 500), "Money : " + money);
+        GUI.Label(new Rect(20, 60, 500, 500), "HP : " + currentHealth + "/" + maxHealth);
     }
 
     private IEnumerator FlashRoutine()

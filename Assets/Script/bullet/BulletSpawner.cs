@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -9,10 +10,13 @@ public class BulletSpawner : MonoBehaviour
     public int defaultCapacity;
     public int maxSize;
 
+    private List<Bullet> spawnedBullets;
+
     private IObjectPool<Bullet> bulletPool;
 
     private void Awake()
     {
+        spawnedBullets = new List<Bullet>();
         bulletPool = new ObjectPool<Bullet>(
             CreateBullet,
             OnGetFromPool,
@@ -24,11 +28,22 @@ public class BulletSpawner : MonoBehaviour
         );
     }
 
+    private void Clear()
+    {
+        bulletPool.Clear();
+        foreach (Bullet bullet in spawnedBullets)
+        {
+            Destroy(bullet.gameObject);
+        }
+        spawnedBullets.Clear();
+    }
+
     private Bullet CreateBullet()
     {
         GameObject obj = Instantiate(bulletPrefab);
         Bullet bullet = obj.GetComponent<Bullet>();
         bullet.pool = bulletPool;
+        spawnedBullets.Add(bullet);
         return bullet;
     }
 
@@ -63,9 +78,10 @@ public class BulletSpawner : MonoBehaviour
         bullet.Fire(direction);
     }
 
+
     public void SetBullet(GameObject bulletPrefab)
     {
-        bulletPool.Clear();
+        Clear();
         this.bulletPrefab = bulletPrefab;
     }
 }
