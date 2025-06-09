@@ -19,4 +19,5 @@ public class BulletItem
     public float lifeTime;
     public GameObject prefab;
     public string iconPath;
+    public int price;
 }

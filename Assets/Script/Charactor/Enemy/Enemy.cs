@@ -98,6 +98,11 @@ public class Enemy : Charactor
 
     public new void Die()
     {
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.money += 1;
+        }
         ReturnToPool();
     }
 

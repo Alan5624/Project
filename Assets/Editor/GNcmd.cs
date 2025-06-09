@@ -68,8 +68,14 @@ public class GNcmd
     [MenuItem("CMcmd/Test")]
     public static void Test()
     {
-        var go = Resources.Load("Prefab/Panel/PackagePanel");
-        Debug.Log(go == null ? "❌ 沒載到" : $"✅ 載入成功: {go.name}");
+        PackageLocalData.Instance.items = new List<PackageLocalItem>();
+            PackageLocalItem packageLocalItem = new PackageLocalItem
+            {
+                uid = 0.ToString(),
+                id = 0
+            };
+            PackageLocalData.Instance.items.Add(packageLocalItem);
+        PackageLocalData.Instance.SavePackage();
     }
 
     [MenuItem("CMcmd/清空panelDictionary")]
