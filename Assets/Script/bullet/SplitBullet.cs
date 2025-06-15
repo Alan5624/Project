@@ -18,4 +18,8 @@ public class SplitBullet : Bullet
         }
         base.ReturnToPool();
     }
+
+    private void OnDestroy() {
+        bulletSpawner.Clear();
+    }
 }

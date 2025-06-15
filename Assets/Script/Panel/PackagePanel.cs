@@ -101,6 +101,12 @@ public class PackagePanel : BasePanel
     private void OnClickRefresh()
     {
         Transform ui_root = GameObject.Find("Shop").transform;
+
+        foreach (Transform child in ui_root)
+        {
+            Destroy(child.gameObject);
+        }
+
         for (int i = 0; i < 3; i++)
         {
             BulletItem bulletItem = GameManager.Instance.GetMerchandise();

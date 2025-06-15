@@ -64,24 +64,52 @@
     <Analyzer Include="D:\Program Files\Unity Hub\Editor\2022.3.48f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Script\Panel\MerchandisePanel.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Script\Panel\PackagePanel.cs" />
     <Compile Include="Assets\Script\Charactor\Charactor.cs" />
     <Compile Include="Assets\Script\Table\BulletTableData.cs" />
     <Compile Include="Assets\Script\bullet\HomingBullet.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Script\bullet\SplitBullet.cs" />
     <Compile Include="Assets\Script\Table\PackageLocalData.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Script\bullet\BulletSpawner.cs" />
     <Compile Include="Assets\Script\Panel\UIConst.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Panel\PackageCell.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Script\Charactor\Player\Player.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\Script\bullet\Landmine.cs" />
     <Compile Include="Assets\Script\InputAction.cs" />
     <Compile Include="Assets\Script\bullet\Bullet.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\Script\Panel\UIManager.cs" />
+    <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\Script\bullet\ExplosionBullet.cs" />
+    <Compile Include="Assets\Script\bullet\ElementLandmine.cs" />
     <Compile Include="Assets\Script\Panel\BasePanel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Shaders\CFX3 Multiply Color.shader" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Ubershader.shader" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\CartoonFX Free.txt" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR.cginc" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\Readme Cartoon FX Remaster FREE.txt" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_PASSES.cginc" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Procedural Ring.shader" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_URP.cginc" />
+    <None Include="Assets\Resources\VFX\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Distortion.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -916,6 +944,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
       <Private>False</Private>
@@ -1036,10 +1068,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
       <Private>False</Private>
@@ -1094,6 +1122,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CFXRRuntime.csproj" />
+    <ProjectReference Include="KinoBloom.Runtime.csproj" />
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj" />
+    <ProjectReference Include="CFXREditor.csproj" />
+    <ProjectReference Include="CFXRDemo.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

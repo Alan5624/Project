@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -28,12 +29,15 @@ public class BulletSpawner : MonoBehaviour
         );
     }
 
-    private void Clear()
+    public void Clear()
     {
         bulletPool.Clear();
         foreach (Bullet bullet in spawnedBullets)
         {
-            Destroy(bullet.gameObject);
+            if (!bullet.IsDestroyed())
+            {
+                Destroy(bullet.gameObject);
+            }
         }
         spawnedBullets.Clear();
     }

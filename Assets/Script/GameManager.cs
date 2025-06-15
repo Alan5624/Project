@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public BulletItem GetMerchandise()
     {
         List<BulletItem> items = GetBulletTableData().bulletItemsList;
-        int id = Random.Range(0, 3);
+        int id = Random.Range(0, 4);
         return GetPackageLocalItemById(id);
     }
 

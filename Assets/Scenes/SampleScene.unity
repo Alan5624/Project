@@ -155,7 +155,7 @@ MonoBehaviour:
   playerTransform: {fileID: 1788965504}
   spawnRadiusMin: 15
   spawnRadiusMax: 15
-  spawnInterval: 2
+  spawnInterval: 3
 --- !u!4 &267143438
 Transform:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d303e6432354b634abad87439208c323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100000000
+  maxHealth: 100
   currentHealth: 0
   isVulnerable: 0
   invulnerableDuration: 0
@@ -464,6 +464,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.125
+  nowUsingUid: 
+  money: 0
 --- !u!61 &1788965506
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -600,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a02dcaa93db0443b9bf99c3d2f5901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
+  bulletPrefab: {fileID: 5781028465364971506, guid: d1a65b9a2e2078149831699617cc611f, type: 3}
   spawnPoint: {fileID: 1788965504}
   defaultCapacity: 20
   maxSize: 100

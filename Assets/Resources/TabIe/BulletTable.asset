@@ -18,22 +18,25 @@ MonoBehaviour:
     skillDescription: "\u4E00\u500B\u666E\u901A\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63"
     speed: 3
     damage: 10
-    lifeTime: 0
+    lifeTime: 5
     prefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
     iconPath: Icon/Bullet
+    price: 5
   - id: 1
     name: "\u8FFD\u8E64\u5B50\u5F48"
     skillDescription: "\u4E00\u500B\u8FFD\u8E64\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63\uFF0C\u6703\u8FFD\u8E64\u7BC4\u570D\u5167\u7684\u6575\u4EBA"
     speed: 3
     damage: 10
-    lifeTime: 0
+    lifeTime: 10
     prefab: {fileID: 7255484180147391890, guid: f768f5110e619474a8ce4c1d68ffb8d5, type: 3}
     iconPath: Icon/HomingBullet
+    price: 10
   - id: 2
     name: "\u5206\u88C2\u5B50\u5F48"
     skillDescription: "\u4E00\u500B\u5206\u88C2\u5B50\u5F48\uFF0C\u50B7\u5BB310\uFF0C\u901F\u5EA63\uFF0C\u4E00\u6BB5\u6642\u9593\u6216\u6253\u5230\u6575\u4EBA\u5F8C\uFF0C\u6703\u5206\u88C23\u500B\u666E\u901A\u5B50\u5F48"
     speed: 3
     damage: 10
-    lifeTime: 0.5
+    lifeTime: 1
     prefab: {fileID: 3015029341661319225, guid: 02ee5be371bcf434abf38c83433e9a21, type: 3}
     iconPath: Icon/SplitBullet
+    price: 20

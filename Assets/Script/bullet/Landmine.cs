@@ -81,9 +81,4 @@ public class Landmine : MonoBehaviour
             ReturnToPool();
         }
     }
-    protected virtual void EnemyExplode()
-    {
-        
-    }
-
 }
