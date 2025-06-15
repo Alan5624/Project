@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float bulletSpeed;
     public float delayTime;
+    public string uid;
     public IObjectPool<Bullet> pool;
     [HideInInspector] public new Rigidbody2D rigidbody2D;
 

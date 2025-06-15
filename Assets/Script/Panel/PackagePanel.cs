@@ -10,6 +10,7 @@ public class PackagePanel : BasePanel
     private Transform UIUSE;
     private Transform UIScrollView;
     private Transform UIRefresh;
+    private Transform UIDetail;
     public GameObject packageCellPrefab;
     public GameObject merchandisePanelPrefab;
     private BulletItem bulletItem;
@@ -55,6 +56,15 @@ public class PackagePanel : BasePanel
         }
     }
 
+    public void RefreshDetail(PackageLocalItem packageLocalItem)
+    {
+        DetailPanel detailPanel = UIDetail.GetComponent<DetailPanel>();
+        if (detailPanel != null)
+        {
+            detailPanel.Refresh(packageLocalItem, this);
+        }
+    }
+
     public override void OpenPanel(string name)
     {
         base.OpenPanel(name);
@@ -87,8 +97,9 @@ public class PackagePanel : BasePanel
     {
         UIOK = transform.Find("PackagePanel/RightBottom/OK");
         UIUSE = transform.Find("PackagePanel/RightBottom/USE");
-        UIScrollView = transform.Find("PackagePanel/LeftBottom/Scroll View");
         UIRefresh = transform.Find("PackagePanel/RightBottom/Refresh");
+        UIDetail = transform.Find("PackagePanel/RightBottom/Detail");
+        UIScrollView = transform.Find("PackagePanel/LeftBottom/Scroll View");
     }
 
     private void InstanceClick()

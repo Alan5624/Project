@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class GNcmd
+public class GNcmd : MonoBehaviour
 {
     [MenuItem("CMcmd/讀取BulletTable")]
     public static void ReadBulletTable()
@@ -24,7 +24,9 @@ public class GNcmd
             PackageLocalItem packageLocalItem = new PackageLocalItem
             {
                 uid = i.ToString(),
-                id = i
+                id = i,
+                lv = 1,
+                damage = GameManager.Instance.GetPackageLocalItemById(i).damage
             };
             PackageLocalData.Instance.items.Add(packageLocalItem);
         }
@@ -69,12 +71,14 @@ public class GNcmd
     public static void Test()
     {
         PackageLocalData.Instance.items = new List<PackageLocalItem>();
-            PackageLocalItem packageLocalItem = new PackageLocalItem
-            {
-                uid = 0.ToString(),
-                id = 0
-            };
-            PackageLocalData.Instance.items.Add(packageLocalItem);
+        PackageLocalItem packageLocalItem = new PackageLocalItem
+        {
+            uid = 0.ToString(),
+            id = 0,
+            lv = 1,
+            damage = GameManager.Instance.GetPackageLocalItemById(0).damage
+        };
+        PackageLocalData.Instance.items.Add(packageLocalItem);
         PackageLocalData.Instance.SavePackage();
     }
 
@@ -89,6 +93,20 @@ public class GNcmd
         else
         {
             Debug.LogError("panelDictionary 為 null，無法清空");
+        }
+    }
+    [MenuItem("CMcmd/錢")]
+    public static void AddMoney()
+    {
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.money += 10000;
+            Debug.Log($"已增加 10000 金錢，當前金錢：{player.money}");
+        }
+        else
+        {
+            Debug.LogError("找不到 Player 物件");
         }
     }
 }

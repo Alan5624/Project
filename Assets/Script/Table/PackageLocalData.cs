@@ -54,6 +54,9 @@ public class PackageLocalItem
     public string uid;
     public int id;
 
+    public int lv;
+    public float damage;
+
     public override string ToString()
     {
         return $"PackageLocalItem: UID = {uid}, ID = {id}";

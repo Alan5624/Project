@@ -65,19 +65,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Script\Panel\DetailPanel.cs" />
     <Compile Include="Assets\Script\Panel\MerchandisePanel.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Script\Panel\PackagePanel.cs" />
     <Compile Include="Assets\Script\Charactor\Charactor.cs" />
+    <Compile Include="Assets\Script\bullet\BaseBulletSpawner.cs" />
     <Compile Include="Assets\Script\Table\BulletTableData.cs" />
     <Compile Include="Assets\Script\bullet\HomingBullet.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\Script\bullet\SplitBulletSpawner.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Script\bullet\SplitBullet.cs" />
     <Compile Include="Assets\Script\Table\PackageLocalData.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
-    <Compile Include="Assets\Script\bullet\BulletSpawner.cs" />
     <Compile Include="Assets\Script\Panel\UIConst.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\Enemy.cs" />

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SplitBullet : Bullet
 {
-    public BulletSpawner bulletSpawner;
+    public SplitBulletSpawner bulletSpawner;
     public int splitCount = 3;
     public float splitRotationOffset;
+    public int id = 0;
     protected override void ReturnToPool()
     {
         float startAngle = -splitRotationOffset * (splitCount - 1) / 2f;
@@ -14,7 +15,8 @@ public class SplitBullet : Bullet
         for (int i = 0; i < splitCount; i++)
         {
             float angle = startAngle + i * splitRotationOffset;
-            bulletSpawner.Fire(angle, true);
+            bulletSpawner.id = id;
+            bulletSpawner.Fire(angle, true, uid);
         }
         base.ReturnToPool();
     }

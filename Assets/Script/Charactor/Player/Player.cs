@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Charactor
 {
-    public BulletSpawner bulletSpawner;
+    public BaseBulletSpawner bulletSpawner;
 
     public bool isCoolDown;
     public float attackCooldownDuration;
@@ -71,7 +71,7 @@ public class Player : Charactor
 
     public void Attack()
     {
-        bulletSpawner.Fire(0, false);
+        bulletSpawner.Fire(0, false, nowUsingUid);
         StartCoroutine(AttackCooldownCoroutine());
     }
 

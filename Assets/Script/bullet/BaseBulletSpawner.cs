@@ -4,18 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class BulletSpawner : MonoBehaviour
+public class BaseBulletSpawner : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public int defaultCapacity;
     public int maxSize;
+    public string uid;
 
-    private List<Bullet> spawnedBullets;
+    protected List<Bullet> spawnedBullets;
 
-    private IObjectPool<Bullet> bulletPool;
+    protected IObjectPool<Bullet> bulletPool;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spawnedBullets = new List<Bullet>();
         bulletPool = new ObjectPool<Bullet>(
@@ -29,12 +30,12 @@ public class BulletSpawner : MonoBehaviour
         );
     }
 
-    public void Clear()
+    public virtual void Clear()
     {
         bulletPool.Clear();
         foreach (Bullet bullet in spawnedBullets)
         {
-            if (!bullet.IsDestroyed())
+            if (bullet != null && !bullet.IsDestroyed())
             {
                 Destroy(bullet.gameObject);
             }
@@ -42,32 +43,39 @@ public class BulletSpawner : MonoBehaviour
         spawnedBullets.Clear();
     }
 
-    private Bullet CreateBullet()
+    protected virtual Bullet CreateBullet()
     {
         GameObject obj = Instantiate(bulletPrefab);
         Bullet bullet = obj.GetComponent<Bullet>();
         bullet.pool = bulletPool;
+        PackageLocalItem packageLocalItem = GameManager.Instance.GetPackageLocalItemByUid(uid);
+        BulletItem bulletItem = GameManager.Instance.GetPackageLocalItemById(packageLocalItem.id);
+        bullet.damage = packageLocalItem.damage;
+        bullet.bulletSpeed = bulletItem.speed;
+        bullet.lifeTime = bulletItem.lifeTime;
+        bullet.uid = uid;
         spawnedBullets.Add(bullet);
         return bullet;
     }
 
-    private void OnGetFromPool(Bullet bullet)
+    protected virtual void OnGetFromPool(Bullet bullet)
     {
         bullet.gameObject.SetActive(true);
     }
 
-    private void OnReleaseToPool(Bullet bullet)
+    protected virtual void OnReleaseToPool(Bullet bullet)
     {
         bullet.gameObject.SetActive(false);
     }
 
-    private void OnDestroyBullet(Bullet bullet)
+    protected virtual void OnDestroyBullet(Bullet bullet)
     {
         Destroy(bullet.gameObject);
     }
 
-    public void Fire(float offsetAngleInDegrees, Boolean isDelay)
+    public virtual void Fire(float offsetAngleInDegrees, Boolean isDelay, string uid)
     {
+        this.uid = uid;
         Bullet bullet = bulletPool.Get();
         bullet.transform.position = spawnPoint.position;
         Quaternion rotation = Quaternion.Euler(0, 0, offsetAngleInDegrees) * spawnPoint.rotation;
@@ -83,7 +91,7 @@ public class BulletSpawner : MonoBehaviour
     }
 
 
-    public void SetBullet(GameObject bulletPrefab)
+    public virtual void SetBullet(GameObject bulletPrefab)
     {
         Clear();
         this.bulletPrefab = bulletPrefab;

@@ -12,7 +12,8 @@ public class HomingBullet : Bullet
     public float lockOnDuration;
     public LayerMask enemyLayer;
 
-    protected override void OnEnable() {
+    protected override void OnEnable()
+    {
         base.OnEnable();
         currentTarget = null;
         lockOnTimer = 0f;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5986554876192152105}
   - component: {fileID: 2006231509890706796}
   - component: {fileID: 3694980366996058306}
-  - component: {fileID: 405355358797496600}
+  - component: {fileID: 5508692616694450180}
   m_Layer: 0
   m_Name: SplitBullet
   m_TagString: Untagged
@@ -177,11 +177,13 @@ MonoBehaviour:
   damage: 10
   bulletSpeed: 3
   delayTime: 0.1
+  uid: 
   rigidbody2D: {fileID: 0}
-  bulletSpawner: {fileID: 405355358797496600}
+  bulletSpawner: {fileID: 5508692616694450180}
   splitCount: 3
   splitRotationOffset: 30
---- !u!114 &405355358797496600
+  id: 0
+--- !u!114 &5508692616694450180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,10 +192,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3015029341661319225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a02dcaa93db0443b9bf99c3d2f5901, type: 3}
+  m_Script: {fileID: 11500000, guid: 5599d24b08aeb1b47ad91e4cadaccf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
   spawnPoint: {fileID: 8161539367838387193}
   defaultCapacity: 3
   maxSize: 3
+  uid: 
+  id: 0
