@@ -87,7 +87,7 @@ public class BaseBulletSpawner : MonoBehaviour
         {
             bullet.StartCoroutine(bullet.DelayEnableCollider(bullet.GetComponent<Collider2D>()));
         }
-        bullet.Fire(direction);
+        bullet.FireBullet(direction);
     }
 
 
