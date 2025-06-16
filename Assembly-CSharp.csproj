@@ -64,6 +64,7 @@
     <Analyzer Include="D:\Program Files\Unity Hub\Editor\2022.3.48f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Panel\MainPanel.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Script\Panel\DetailPanel.cs" />
     <Compile Include="Assets\Script\Panel\MerchandisePanel.cs" />
@@ -82,10 +83,10 @@
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Script\Panel\UIConst.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\Script\Charactor\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Panel\PackageCell.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Script\SceneManager.cs" />
     <Compile Include="Assets\Script\Charactor\Player\Player.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Script\bullet\Landmine.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\Script\Panel\UIManager.cs" />
     <Compile Include="Assets\Resources\VFX\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\Script\Charactor\Enemy\BaseEnemy.cs" />
     <Compile Include="Assets\Script\bullet\ExplosionBullet.cs" />
     <Compile Include="Assets\Script\bullet\ElementLandmine.cs" />
     <Compile Include="Assets\Script\Panel\BasePanel.cs" />
