@@ -98,6 +98,7 @@ public class BaseBulletSpawner : MonoBehaviour
             bullet.StartCoroutine(bullet.DelayEnableCollider(bullet.GetComponent<Collider2D>()));
         }
         bullet.FireBullet(direction);
+        AudioSource.PlayClipAtPoint(SFX, transform.position);
     }
 
     public virtual void SetBullet(GameObject bulletPrefab)

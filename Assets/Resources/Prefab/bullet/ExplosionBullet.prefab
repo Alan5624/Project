@@ -176,6 +176,8 @@ MonoBehaviour:
   damage: 10
   bulletSpeed: 3
   delayTime: 0
+  uid: 
   rigidbody2D: {fileID: 0}
   ExplosionRadius: 1.5
-  explosionVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  explosionVFX: {fileID: 100000, guid: 8be46e02657436946839d481bc2965ce, type: 3}
+  SFX: {fileID: 8300000, guid: 0f8beb14a60addb49947cf8184e9b433, type: 3}

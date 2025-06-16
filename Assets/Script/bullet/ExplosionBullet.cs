@@ -7,6 +7,7 @@ public class ExplosionBullet : Bullet
 {
     public float ExplosionRadius;
     public GameObject explosionVFX;
+    public AudioClip SFX;
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,6 +35,7 @@ public class ExplosionBullet : Bullet
                 Charactor enemy = collider.GetComponent<Charactor>();
                 if (enemy != null)
                 {
+                    AudioSource.PlayClipAtPoint(SFX, transform.position);
                     enemy.Hurt(damage);
                 }
             }
