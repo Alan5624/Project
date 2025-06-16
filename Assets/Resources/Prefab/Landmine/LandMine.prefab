@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.8074074, y: 2.86423, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -171,9 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310f8f2ff8a6a499295ea69fdddaf084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 100
   timer: 0
-  damage: 10
+  damage: 50
   bulletSpeed: 0
   delayTime: 0.1
   uid: 
@@ -181,3 +181,4 @@ MonoBehaviour:
   ExplosionRadius: 1.5
   explosionVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   spawnPoint: {fileID: 0}
+  FadeInTime: 0.2
