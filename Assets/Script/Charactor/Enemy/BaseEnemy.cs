@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Charactor
+public class BaseEnemy : Charactor
 {
     public float speed;
     public Vector2 MovementInput;
@@ -25,19 +25,19 @@ public class Enemy : Charactor
 
     private EnemySpawner spawner;
 
-    private void Start()
+    protected virtual void Start()
     {
         originalColor = spriteRenderer.color;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void SetSpawner(EnemySpawner spawner)
+    public virtual void SetSpawner(EnemySpawner spawner)
     {
         this.spawner = spawner;
     }
@@ -56,7 +56,7 @@ public class Enemy : Charactor
     }
 
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (playerTransform != null)
         {
@@ -74,7 +74,7 @@ public class Enemy : Charactor
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -87,7 +87,7 @@ public class Enemy : Charactor
         }
     }
 
-    public void Hurt()
+    public virtual void Hurt()
     {
         if (isKnockback)
         {
@@ -96,7 +96,7 @@ public class Enemy : Charactor
         FlashRed();
     }
 
-    public new void Die()
+    public virtual new void Die()
     {
         Player player = FindObjectOfType<Player>();
         if (player != null)
@@ -106,7 +106,7 @@ public class Enemy : Charactor
         ReturnToPool();
     }
 
-    public void ReturnToPool()
+    public virtual void ReturnToPool()
     {
         spriteRenderer.color = originalColor;
         if (spawner != null)
@@ -119,12 +119,12 @@ public class Enemy : Charactor
         }
     }
 
-    public void FlashRed()
+    public virtual void FlashRed()
     {
         StartCoroutine(FlashRoutine());
     }
 
-    private IEnumerator FlashRoutine()
+    protected virtual IEnumerator FlashRoutine()
     {
         spriteRenderer.color = flashColor;
         yield return new WaitForSeconds(flashDuration);

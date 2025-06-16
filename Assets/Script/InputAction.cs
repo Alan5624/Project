@@ -70,6 +70,34 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Main"",
+            ""id"": ""530b8d06-301f-4bc7-b723-557a8364bb2a"",
+            ""actions"": [
+                {
+                    ""name"": ""Null"",
+                    ""type"": ""Button"",
+                    ""id"": ""7046da23-2144-47f7-a332-6ea4bb8e8b3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""427176ab-37f5-4844-ad39-e33e94cc7648"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Null"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -90,11 +118,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
         m_Game_OpenPackage = m_Game.FindAction("OpenPackage", throwIfNotFound: true);
+        // Main
+        m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
+        m_Main_Null = m_Main.FindAction("Null", throwIfNotFound: true);
     }
 
     ~@InputSystem()
     {
         UnityEngine.Debug.Assert(!m_Game.enabled, "This will cause a leak and performance issues, InputSystem.Game.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Main.enabled, "This will cause a leak and performance issues, InputSystem.Main.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -206,6 +238,52 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         }
     }
     public GameActions @Game => new GameActions(this);
+
+    // Main
+    private readonly InputActionMap m_Main;
+    private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
+    private readonly InputAction m_Main_Null;
+    public struct MainActions
+    {
+        private @InputSystem m_Wrapper;
+        public MainActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Null => m_Wrapper.m_Main_Null;
+        public InputActionMap Get() { return m_Wrapper.m_Main; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainActions set) { return set.Get(); }
+        public void AddCallbacks(IMainActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainActionsCallbackInterfaces.Add(instance);
+            @Null.started += instance.OnNull;
+            @Null.performed += instance.OnNull;
+            @Null.canceled += instance.OnNull;
+        }
+
+        private void UnregisterCallbacks(IMainActions instance)
+        {
+            @Null.started -= instance.OnNull;
+            @Null.performed -= instance.OnNull;
+            @Null.canceled -= instance.OnNull;
+        }
+
+        public void RemoveCallbacks(IMainActions instance)
+        {
+            if (m_Wrapper.m_MainActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMainActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MainActions @Main => new MainActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -219,5 +297,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     {
         void OnFire(InputAction.CallbackContext context);
         void OnOpenPackage(InputAction.CallbackContext context);
+    }
+    public interface IMainActions
+    {
+        void OnNull(InputAction.CallbackContext context);
     }
 }

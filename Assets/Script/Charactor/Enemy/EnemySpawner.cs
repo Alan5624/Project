@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SetupEnemy(GameObject enemy)
     {
-        Enemy enemyComp = enemy.GetComponent<Enemy>();
+        BaseEnemy enemyComp = enemy.GetComponent<BaseEnemy>();
         if (enemyComp != null)
         {
             enemyComp.playerTransform = playerTransform;
