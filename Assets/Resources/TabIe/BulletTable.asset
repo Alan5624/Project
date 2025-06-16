@@ -49,3 +49,13 @@ MonoBehaviour:
     prefab: {fileID: 5781028465364971506, guid: d1a65b9a2e2078149831699617cc611f, type: 3}
     iconPath: Icon/ExplosionBullet
     price: 30
+  - id: 4
+    name: "\u5730\u96F7"
+    skillDescription: "\u4E00\u9846\u4E0D\u6703\u52D5\u7684\u5730\u96F7 \u4F46\u6703
+      \u7206 \u70B8\uFF01\uFF01"
+    speed: 0
+    damage: 50
+    lifeTime: 10
+    prefab: {fileID: 8288823277863004156, guid: 733bbdc881b30402aa74629e5372787e, type: 3}
+    iconPath: Icon/Landmine
+    price: 30

@@ -20,7 +20,7 @@ public class ExplosionBullet : Bullet
         }
     }
 
-    private void Explode()
+    protected virtual void Explode()
     {
         if (explosionVFX != null)
         {

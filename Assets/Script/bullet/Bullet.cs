@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private bool isReturned;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -63,9 +63,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Fire(Vector2 direction)
+    protected virtual void Fire(Vector2 direction)
     {
         rigidbody2D.velocity = direction * bulletSpeed;
+    }
+
+    public void FireBullet(Vector2 direction)
+    {
+        Fire(direction);
     }
 
     public IEnumerator DelayEnableCollider(Collider2D collider2D)
