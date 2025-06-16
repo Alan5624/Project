@@ -47,7 +47,6 @@ public class LandMine : ExplosionBullet
         }
         color.a = 1f;
         sp.color = color;
-        
     }
     protected override void OnTriggerEnter2D(Collider2D other)
     {

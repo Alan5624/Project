@@ -6,11 +6,14 @@ using UnityEngine.Pool;
 
 public class BaseBulletSpawner : MonoBehaviour
 {
+    public AudioClip SFX;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public int defaultCapacity;
     public int maxSize;
     public string uid;
+    public int BulletCount;
+    public int BulletCountLimit;
 
     protected List<Bullet> spawnedBullets;
 
@@ -32,6 +35,7 @@ public class BaseBulletSpawner : MonoBehaviour
 
     public virtual void Clear()
     {
+        BulletCount = 0;
         bulletPool.Clear();
         foreach (Bullet bullet in spawnedBullets)
         {
@@ -61,11 +65,13 @@ public class BaseBulletSpawner : MonoBehaviour
     protected virtual void OnGetFromPool(Bullet bullet)
     {
         bullet.gameObject.SetActive(true);
+        BulletCount++;
     }
 
     protected virtual void OnReleaseToPool(Bullet bullet)
     {
         bullet.gameObject.SetActive(false);
+        BulletCount--;
     }
 
     protected virtual void OnDestroyBullet(Bullet bullet)
@@ -75,6 +81,10 @@ public class BaseBulletSpawner : MonoBehaviour
 
     public virtual void Fire(float offsetAngleInDegrees, Boolean isDelay, string uid)
     {
+        if (BulletCount >= BulletCountLimit && GameManager.Instance.GetPackageLocalItemByUid(uid).id == 4)
+        {
+            return;
+        }
         this.uid = uid;
         Bullet bullet = bulletPool.Get();
         bullet.transform.position = spawnPoint.position;
@@ -89,7 +99,6 @@ public class BaseBulletSpawner : MonoBehaviour
         }
         bullet.FireBullet(direction);
     }
-
 
     public virtual void SetBullet(GameObject bulletPrefab)
     {
