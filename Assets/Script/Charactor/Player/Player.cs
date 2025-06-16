@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : Charactor
 {
     public BaseBulletSpawner bulletSpawner;
-
     public bool isCoolDown;
     public float attackCooldownDuration;
     [HideInInspector]public InputSystem inputSystem;
@@ -54,6 +53,10 @@ public class Player : Charactor
         {
             Attack();
         }
+        if (inputSystem.Game.PutLandmine.ReadValue<float>() > 0 && !isCoolDown)
+        {
+            LandMineAttack();
+        }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - transform.position).normalized;
@@ -74,7 +77,11 @@ public class Player : Charactor
         bulletSpawner.Fire(0, false, nowUsingUid);
         StartCoroutine(AttackCooldownCoroutine());
     }
-
+    public void LandMineAttack()
+    {
+        bulletSpawner.Fire(0, false, nowUsingUid);
+        StartCoroutine(AttackCooldownCoroutine());
+    }
     public new void Die()
     {
         inputSystem.Game.Disable();

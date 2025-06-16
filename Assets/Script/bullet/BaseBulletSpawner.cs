@@ -14,7 +14,7 @@ public class BaseBulletSpawner : MonoBehaviour
     public string uid;
     public int BulletCount;
     public int BulletCountLimit;
-
+    public bool LandMineIsOn = false;
     protected List<Bullet> spawnedBullets;
 
     protected IObjectPool<Bullet> bulletPool;

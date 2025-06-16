@@ -44,6 +44,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PutLandmine"",
+                    ""type"": ""Button"",
+                    ""id"": ""b95e5cda-a6e4-4e89-8706-a8a0257cf64f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -66,6 +75,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
                     ""action"": ""OpenPackage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""837495fa-65ed-4822-abbd-6bed413b9742"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""PutLandmine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -118,6 +138,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
         m_Game_OpenPackage = m_Game.FindAction("OpenPackage", throwIfNotFound: true);
+        m_Game_PutLandmine = m_Game.FindAction("PutLandmine", throwIfNotFound: true);
         // Main
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_Null = m_Main.FindAction("Null", throwIfNotFound: true);
@@ -190,12 +211,14 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
     private readonly InputAction m_Game_Fire;
     private readonly InputAction m_Game_OpenPackage;
+    private readonly InputAction m_Game_PutLandmine;
     public struct GameActions
     {
         private @InputSystem m_Wrapper;
         public GameActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @Fire => m_Wrapper.m_Game_Fire;
         public InputAction @OpenPackage => m_Wrapper.m_Game_OpenPackage;
+        public InputAction @PutLandmine => m_Wrapper.m_Game_PutLandmine;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +234,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @OpenPackage.started += instance.OnOpenPackage;
             @OpenPackage.performed += instance.OnOpenPackage;
             @OpenPackage.canceled += instance.OnOpenPackage;
+            @PutLandmine.started += instance.OnPutLandmine;
+            @PutLandmine.performed += instance.OnPutLandmine;
+            @PutLandmine.canceled += instance.OnPutLandmine;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -221,6 +247,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @OpenPackage.started -= instance.OnOpenPackage;
             @OpenPackage.performed -= instance.OnOpenPackage;
             @OpenPackage.canceled -= instance.OnOpenPackage;
+            @PutLandmine.started -= instance.OnPutLandmine;
+            @PutLandmine.performed -= instance.OnPutLandmine;
+            @PutLandmine.canceled -= instance.OnPutLandmine;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -297,6 +326,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     {
         void OnFire(InputAction.CallbackContext context);
         void OnOpenPackage(InputAction.CallbackContext context);
+        void OnPutLandmine(InputAction.CallbackContext context);
     }
     public interface IMainActions
     {
