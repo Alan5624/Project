@@ -76,6 +76,7 @@
     <Compile Include="Assets\Script\bullet\SplitBullet.cs" />
     <Compile Include="Assets\Script\Table\PackageLocalData.cs" />
     <Compile Include="Assets\Script\Initaload.cs" />
+    <Compile Include="Assets\Script\Landmine\LandMineSpawner.cs" />
     <Compile Include="Assets\Script\Panel\UIConst.cs" />
     <Compile Include="Assets\Resources\VFX\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
