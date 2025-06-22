@@ -13,11 +13,11 @@ public class ExplosionBullet : Bullet
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Charactor enemy = other.gameObject.GetComponent<Charactor>();
-            if (enemy != null)
-            {
+            //Charactor enemy = other.gameObject.GetComponent<Charactor>();
+            //if (enemy != null)
+            //{
                 Explode();
-            }
+            //}
         }
     }
 

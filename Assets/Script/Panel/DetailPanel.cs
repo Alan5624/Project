@@ -50,7 +50,6 @@ public class DetailPanel : BasePanel
     private void InstanceClick()
     {
         UIUpgrade.GetComponent<Button>().onClick.AddListener(OnClickUpgrade);
-        Debug.Log("InstanceClick: " + UIUpgrade.name);
     }
 
     private void OnClickUpgrade()

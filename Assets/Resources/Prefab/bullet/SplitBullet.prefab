@@ -195,9 +195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5599d24b08aeb1b47ad91e4cadaccf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletSFX: {fileID: 0}
+  LandmineSFX: {fileID: 0}
   bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
   spawnPoint: {fileID: 8161539367838387193}
   defaultCapacity: 3
   maxSize: 3
   uid: 
+  BulletCount: 0
+  BulletCountLimit: 0
+  LandMineIsOn: 0
   id: 0

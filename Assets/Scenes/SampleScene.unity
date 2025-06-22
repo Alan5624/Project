@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -459,13 +459,13 @@ MonoBehaviour:
         m_CallState: 2
   bulletSpawner: {fileID: 1788965509}
   isCoolDown: 0
-  attackCooldownDuration: 0.1
+  attackCooldownDuration: 0.25
   rigidbody2D: {fileID: 0}
   spriteRenderer: {fileID: 0}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.125
   nowUsingUid: 
-  money: 0
+  money: 5
 --- !u!61 &1788965506
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -602,11 +602,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a02dcaa93db0443b9bf99c3d2f5901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5781028465364971506, guid: d1a65b9a2e2078149831699617cc611f, type: 3}
+  BulletSFX: {fileID: 8300000, guid: 665818f671a5ff6439e7838d1a95344d, type: 3}
+  LandmineSFX: {fileID: 8300000, guid: 5e1bd6d91e440b44884368ac9f385140, type: 3}
+  bulletPrefab: {fileID: 631785673435051807, guid: e0e09605f8f5083419c81df7e9861820, type: 3}
   spawnPoint: {fileID: 1788965504}
   defaultCapacity: 20
   maxSize: 100
   uid: 
+  BulletCount: 0
+  BulletCountLimit: 3
 --- !u!1 &1833838932
 GameObject:
   m_ObjectHideFlags: 0

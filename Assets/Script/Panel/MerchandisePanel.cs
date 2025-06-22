@@ -45,7 +45,6 @@ public class MerchandisePanel : BasePanel
     private void InstanceClick()
     {
         UIBUY.GetComponent<Button>().onClick.AddListener(OnClickBUY);
-        Debug.Log("InstanceClick: " + UIBUY.name);
     }
 
     private void OnClickBUY()

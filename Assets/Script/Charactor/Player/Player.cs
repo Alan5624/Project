@@ -1,13 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System;
 
 public class Player : Charactor
 {
     public BaseBulletSpawner bulletSpawner;
+    public ExplosiveSkill explosiveSkill;
     public bool isCoolDown;
+    public bool isExplosiveSkillCoolDown;
     public float attackCooldownDuration;
-    [HideInInspector]public InputSystem inputSystem;
+    [HideInInspector] public InputSystem inputSystem;
     [HideInInspector] public new Rigidbody2D rigidbody2D;
     [HideInInspector] public SpriteRenderer spriteRenderer;
 
@@ -21,7 +25,26 @@ public class Player : Charactor
     private void Start()
     {
         originalColor = spriteRenderer.color;
-        money = 0;
+        money = 5;
+        Clear();
+    }
+
+    private void Clear()
+    {
+        PackageLocalData.Instance.LoadPackage();
+        PackageLocalData.Instance.items.Clear();
+        PackageLocalData.Instance.SavePackage();
+
+        PackageLocalData.Instance.items = new List<PackageLocalItem>();
+        PackageLocalItem packageLocalItem = new PackageLocalItem
+        {
+            uid = 0.ToString(),
+            id = 0,
+            lv = 1,
+            damage = GameManager.Instance.GetPackageLocalItemById(0).damage
+        };
+        PackageLocalData.Instance.items.Add(packageLocalItem);
+        PackageLocalData.Instance.SavePackage();
     }
 
     private void Awake()
@@ -40,10 +63,16 @@ public class Player : Charactor
         inputSystem.Game.Enable();
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (inputSystem.Game.OpenPackage.triggered)
         {
             UIManager.Instance.OpenPanel(UIConst.PackagePanel);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            money += 10000;
         }
     }
 
@@ -53,9 +82,10 @@ public class Player : Charactor
         {
             Attack();
         }
-        if (inputSystem.Game.PutLandmine.ReadValue<float>() > 0 && !isCoolDown)
+
+        if (inputSystem.Game.ExplosiveSkills.ReadValue<float>() > 0)
         {
-            LandMineAttack();
+            ExplosiveSkill();
         }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -77,11 +107,13 @@ public class Player : Charactor
         bulletSpawner.Fire(0, false, nowUsingUid);
         StartCoroutine(AttackCooldownCoroutine());
     }
-    public void LandMineAttack()
+
+    public void ExplosiveSkill()
     {
-        bulletSpawner.Fire(0, false, nowUsingUid);
-        StartCoroutine(AttackCooldownCoroutine());
+        explosiveSkill.Fire();
+        StartCoroutine(ExplosiveSkillCooldownCoroutine());
     }
+
     public new void Die()
     {
         inputSystem.Game.Disable();
@@ -114,5 +146,12 @@ public class Player : Charactor
         isCoolDown = true;
         yield return new WaitForSeconds(attackCooldownDuration);
         isCoolDown = false;
+    }
+
+    private IEnumerator ExplosiveSkillCooldownCoroutine()
+    {
+        isExplosiveSkillCoolDown = true;
+        yield return new WaitForSeconds(attackCooldownDuration);
+        isExplosiveSkillCoolDown = false;
     }
 }

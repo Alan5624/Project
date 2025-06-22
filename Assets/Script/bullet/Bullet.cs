@@ -13,12 +13,14 @@ public class Bullet : MonoBehaviour
     public string uid;
     public IObjectPool<Bullet> pool;
     [HideInInspector] public new Rigidbody2D rigidbody2D;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
 
-    private bool isReturned;
+    protected bool isReturned;
 
     protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected virtual void OnEnable()

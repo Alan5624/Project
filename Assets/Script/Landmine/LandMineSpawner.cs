@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Not use
 public class LandMineSpawner : BaseBulletSpawner
 {
-    // Start is called before the first frame update
     protected override void OnGetFromPool(Bullet bullet)
     {
         bullet.gameObject.SetActive(true);
@@ -15,6 +14,4 @@ public class LandMineSpawner : BaseBulletSpawner
         bullet.gameObject.SetActive(false);
         BulletCount--;
     }
-
-    // Update is called once per frame
 }

@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PutLandmine",
+                    "name": "ExplosiveSkills",
                     "type": "Button",
                     "id": "b95e5cda-a6e4-4e89-8706-a8a0257cf64f",
                     "expectedControlType": "",
@@ -63,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "PutLandmine",
+                    "action": "ExplosiveSkills",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

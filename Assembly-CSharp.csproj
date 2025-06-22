@@ -67,6 +67,7 @@
     <Compile Include="Assets\Script\Panel\MainPanel.cs" />
     <Compile Include="Assets\Script\Panel\DetailPanel.cs" />
     <Compile Include="Assets\Script\Panel\MerchandisePanel.cs" />
+    <Compile Include="Assets\Script\VFX\VFX.cs" />
     <Compile Include="Assets\Script\Panel\PackagePanel.cs" />
     <Compile Include="Assets\Script\Charactor\Charactor.cs" />
     <Compile Include="Assets\Script\bullet\BaseBulletSpawner.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Script\Initaload.cs" />
     <Compile Include="Assets\Script\Landmine\LandMineSpawner.cs" />
     <Compile Include="Assets\Script\Panel\UIConst.cs" />
-    <Compile Include="Assets\Resources\VFX\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Panel\PackageCell.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\EnemySpawner.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Assets\Script\Panel\UIManager.cs" />
     <Compile Include="Assets\Script\Charactor\Enemy\BaseEnemy.cs" />
     <Compile Include="Assets\Script\bullet\ExplosionBullet.cs" />
+    <Compile Include="Assets\Script\Skills\Explosive Skill.cs" />
     <Compile Include="Assets\Script\Panel\BasePanel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -925,10 +926,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
       <Private>False</Private>
@@ -1047,6 +1044,10 @@
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">

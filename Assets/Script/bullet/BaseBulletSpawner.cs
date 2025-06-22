@@ -6,7 +6,8 @@ using UnityEngine.Pool;
 
 public class BaseBulletSpawner : MonoBehaviour
 {
-    public AudioClip SFX;
+    public AudioClip BulletSFX;
+    public AudioClip LandmineSFX;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public int defaultCapacity;
@@ -14,7 +15,6 @@ public class BaseBulletSpawner : MonoBehaviour
     public string uid;
     public int BulletCount;
     public int BulletCountLimit;
-    public bool LandMineIsOn = false;
     protected List<Bullet> spawnedBullets;
 
     protected IObjectPool<Bullet> bulletPool;
@@ -81,9 +81,18 @@ public class BaseBulletSpawner : MonoBehaviour
 
     public virtual void Fire(float offsetAngleInDegrees, Boolean isDelay, string uid)
     {
-        if (BulletCount >= BulletCountLimit && GameManager.Instance.GetPackageLocalItemByUid(uid).id == 4)
+        int id = GameManager.Instance.GetPackageLocalItemByUid(uid).id;
+        if (BulletCount >= BulletCountLimit && id == 4)
         {
             return;
+        }
+        if (id != 4 && BulletSFX != null)
+        {
+            AudioSource.PlayClipAtPoint(BulletSFX, transform.position);
+        }
+        else if (id == 4 && LandmineSFX != null)
+        {
+            AudioSource.PlayClipAtPoint(LandmineSFX, transform.position);
         }
         this.uid = uid;
         Bullet bullet = bulletPool.Get();
@@ -98,7 +107,6 @@ public class BaseBulletSpawner : MonoBehaviour
             bullet.StartCoroutine(bullet.DelayEnableCollider(bullet.GetComponent<Collider2D>()));
         }
         bullet.FireBullet(direction);
-        AudioSource.PlayClipAtPoint(SFX, transform.position);
     }
 
     public virtual void SetBullet(GameObject bulletPrefab)

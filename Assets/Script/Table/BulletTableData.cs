@@ -16,6 +16,7 @@ public class BulletItem
     public string skillDescription;
     public float speed;
     public float damage;
+    public float Cooldown;
     public float lifeTime;
     public GameObject prefab;
     public string iconPath;

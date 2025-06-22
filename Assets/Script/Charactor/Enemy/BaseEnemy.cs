@@ -7,6 +7,7 @@ public class BaseEnemy : Charactor
     public float speed;
     public Vector2 MovementInput;
     public Transform playerTransform;
+    public int money;
 
     public float damage;
     [Header("擊退")]
@@ -101,7 +102,7 @@ public class BaseEnemy : Charactor
         Player player = FindObjectOfType<Player>();
         if (player != null)
         {
-            player.money += 1;
+            player.money += money;
         }
         ReturnToPool();
     }
